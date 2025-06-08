@@ -9,17 +9,17 @@ if TYPE_CHECKING:
     from homeassistant.config_entries import ConfigEntry
     from homeassistant.loader import Integration
 
-    from .api import AtemSourcesApiClient
-    from .coordinator import AtemSourcesDataUpdateCoordinator
+    from .api import AtemSwitcherApiClient
+    from .coordinator import AtemSwitcherDataUpdateCoordinator
 
 
-type AtemSourcesConfigEntry = ConfigEntry[AtemSourcesData]
+type AtemSwitcherConfigEntry = ConfigEntry[AtemSwitcherData]
 
 
 @dataclass
-class AtemSourcesData:
-    """Data for the AtemSources integration."""
+class AtemSwitcherData:
+    """Data for the AtemSwitcher integration."""
 
-    client: AtemSourcesApiClient
-    coordinator: AtemSourcesDataUpdateCoordinator
+    client: AtemSwitcherApiClient
+    coordinator: AtemSwitcherDataUpdateCoordinator
     integration: Integration

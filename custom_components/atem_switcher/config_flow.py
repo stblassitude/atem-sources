@@ -1,22 +1,21 @@
-"""Adds config flow for AtemSources."""
+"""Adds config flow for AtemSwitcher."""
 
 from __future__ import annotations
+
+import logging
 
 import voluptuous as vol
 from homeassistant import config_entries
 from homeassistant.const import CONF_HOST
 from homeassistant.helpers import selector
 
-from .api import (
-    AtemSourcesApiClientAuthenticationError,
-    AtemSourcesApiClientCommunicationError,
-    AtemSourcesApiClientError,
-)
 from .const import DOMAIN, LOGGER
 
+LOGGER.info("Initializing config flow for ATEM")
 
-class AtemSourcesFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
-    """Config flow for AtemSources."""
+
+class AtemSwitcherFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
+    """Config flow for AtemSwitcher."""
 
     VERSION = 1
 
@@ -25,26 +24,13 @@ class AtemSourcesFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
         user_input: dict | None = None,
     ) -> config_entries.ConfigFlowResult:
         """Handle a flow initialized by the user."""
+        LOGGER.info("Starting user flow")
         _errors = {}
         if user_input is not None:
-            try:
-                await self._test_host(
-                    hostname=user_input[CONF_HOST],
-                )
-            except AtemSourcesApiClientAuthenticationError as exception:
-                LOGGER.warning(exception)
-                _errors["base"] = "auth"
-            except AtemSourcesApiClientCommunicationError as exception:
-                LOGGER.error(exception)
-                _errors["base"] = "connection"
-            except AtemSourcesApiClientError as exception:
-                LOGGER.exception(exception)
-                _errors["base"] = "unknown"
-            else:
-                return self.async_create_entry(
-                    title=user_input[CONF_HOST],
-                    data=user_input,
-                )
+            return self.async_create_entry(
+                title=user_input[CONF_HOST],
+                data=user_input,
+            )
 
         return self.async_show_form(
             step_id="user",
@@ -62,6 +48,3 @@ class AtemSourcesFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
             ),
             errors=_errors,
         )
-
-    async def _test_host(self, hostname: str) -> None:
-        """Validate hostname."""

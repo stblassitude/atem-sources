@@ -9,4 +9,4 @@ homeassistant:
 logger:
   default: info
   logs:
-    custom_components.integration_AtemSources: debug
+    custom_components.atem_switcher: debug

@@ -1,12 +1,12 @@
 {
   "domain": "atem_switcher",
-  "name": "ATEM Sources",
+  "name": "ATEM Switcher",
   "codeowners": [
     "@stblassitu.de"
   ],
   "config_flow": true,
-  "documentation": "https://github.com/stblassitude/atem-sources",
+  "documentation": "https://github.com/stblassitude/atem-switcher",
   "iot_class": "cloud_polling",
-  "issue_tracker": "https://github.com/stblassitude/atem-sources/issues",
+  "issue_tracker": "https://github.com/stblassitudeatem-switcher/issues",
   "version": "0.1.0"
 }

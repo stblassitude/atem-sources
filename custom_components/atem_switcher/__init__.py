@@ -1,9 +1,4 @@
-"""
-Custom integration to integrate atem-switcher with Home Assistant.
-
-For more details about this integration, please refer to
-https://github.com/ludeeus/atem-switcher
-"""
+"""Custom integration to integrate atem-switcher with Home Assistant."""
 
 from __future__ import annotations
 
@@ -13,36 +8,39 @@ from typing import TYPE_CHECKING
 from homeassistant.const import CONF_HOST, Platform
 from homeassistant.loader import async_get_loaded_integration
 
-from .api import AtemSourcesApiClient
+from .api import AtemSwitcherApiClient
 from .const import DOMAIN, LOGGER
-from .coordinator import AtemSourcesDataUpdateCoordinator
-from .data import AtemSourcesData
+from .coordinator import AtemSwitcherDataUpdateCoordinator
+from .data import AtemSwitcherData
 
 if TYPE_CHECKING:
     from homeassistant.core import HomeAssistant
 
-    from .data import AtemSourcesConfigEntry
+    from .data import AtemSwitcherConfigEntry
 
 PLATFORMS: list[Platform] = [
     Platform.SELECT,
 ]
 
+LOGGER.info("__init__.py for ATEM")
+
 
 # https://developers.home-assistant.io/docs/config_entries_index/#setting-up-an-entry
 async def async_setup_entry(
     hass: HomeAssistant,
-    entry: AtemSourcesConfigEntry,
+    entry: AtemSwitcherConfigEntry,
 ) -> bool:
     """Set up this integration using UI."""
-    coordinator = AtemSourcesDataUpdateCoordinator(
+    LOGGER.info("Setting up ATEM Switcher")
+    coordinator = AtemSwitcherDataUpdateCoordinator(
         hass=hass,
         logger=LOGGER,
         name=DOMAIN,
         update_interval=timedelta(seconds=1),
         always_update=False,
     )
-    entry.runtime_data = AtemSourcesData(
-        client=AtemSourcesApiClient(
+    entry.runtime_data = AtemSwitcherData(
+        client=AtemSwitcherApiClient(
             hostname=entry.data[CONF_HOST],
         ),
         integration=async_get_loaded_integration(hass, entry.domain),
@@ -61,7 +59,7 @@ async def async_setup_entry(
 
 async def async_unload_entry(
     hass: HomeAssistant,
-    entry: AtemSourcesConfigEntry,
+    entry: AtemSwitcherConfigEntry,
 ) -> bool:
     """Handle removal of an entry."""
     return await hass.config_entries.async_unload_platforms(entry, PLATFORMS)
@@ -69,7 +67,7 @@ async def async_unload_entry(
 
 async def async_reload_entry(
     hass: HomeAssistant,
-    entry: AtemSourcesConfigEntry,
+    entry: AtemSwitcherConfigEntry,
 ) -> None:
     """Reload config entry."""
     await hass.config_entries.async_reload(entry.entry_id)

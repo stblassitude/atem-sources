@@ -2,10 +2,9 @@
     "config": {
         "step": {
             "user": {
-                "description": "If you need help with the configuration have a look here: https://github.com/ludeeus/atem-switcher",
+                "description": "If you need help with the configuration have a look here: https://github.com/stblassitude/atem-switcher",
                 "data": {
-                    "username": "Username",
-                    "password": "Password"
+                    "host": "Hostname"
                 }
             }
         },
