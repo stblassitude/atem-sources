@@ -6,11 +6,8 @@ import voluptuous as vol
 from homeassistant import config_entries
 from homeassistant.const import CONF_HOST
 from homeassistant.helpers import selector
-from homeassistant.helpers.aiohttp_client import async_create_clientsession
-from slugify import slugify
 
 from .api import (
-    AtemSourcesApiClient,
     AtemSourcesApiClientAuthenticationError,
     AtemSourcesApiClientCommunicationError,
     AtemSourcesApiClientError,
@@ -44,13 +41,6 @@ class AtemSourcesFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
                 LOGGER.exception(exception)
                 _errors["base"] = "unknown"
             else:
-                # await self.async_set_unique_id(
-                #     ## Do NOT use this in production code
-                #     ## The unique_id should never be something that can change
-                #     ## https://developers.home-assistant.io/docs/config_entries_config_flow_handler#unique-ids
-                #     unique_id=slugify(user_input[CONF_USERNAME])
-                # )
-                # self._abort_if_unique_id_configured()
                 return self.async_create_entry(
                     title=user_input[CONF_HOST],
                     data=user_input,
@@ -75,10 +65,3 @@ class AtemSourcesFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
 
     async def _test_host(self, hostname: str) -> None:
         """Validate hostname."""
-        pass
-        # client = AtemSourcesApiClient(
-        #     username=username,
-        #     password=password,
-        #     session=async_create_clientsession(self.hass),
-        # )
-        # await client.async_get_data()

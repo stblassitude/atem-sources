@@ -1,5 +1,5 @@
 {
-  "domain": "atem-switcher",
+  "domain": "atem_switcher",
   "name": "ATEM Sources",
   "codeowners": [
     "@stblassitu.de"
