@@ -3,11 +3,11 @@
 from __future__ import annotations
 
 import asyncio
-import logging
 from typing import TYPE_CHECKING
 
 from homeassistant.components.select import SelectEntity, SelectEntityDescription
 
+from .const import LOGGER
 from .entity import AtemSwitcherEntity
 
 if TYPE_CHECKING:
