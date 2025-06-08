@@ -1,4 +1,4 @@
-"""Select platform for atem-switcher."""
+"""Select platform for atem_switcher."""
 
 from __future__ import annotations
 
@@ -19,7 +19,7 @@ if TYPE_CHECKING:
 
 ENTITY_DESCRIPTIONS = (
     SelectEntityDescription(
-        key="atem-switcher",
+        key="atem_switcher",
         name="ATEM Sources",
         icon="mdi:gender-transgender",
     ),
@@ -44,7 +44,7 @@ async def async_setup_entry(
 
 
 class AtemSwitcherSwitch(AtemSwitcherEntity, SelectEntity):
-    """atem-switcher select class."""
+    """atem_switcher select class."""
 
     def __init__(
         self,

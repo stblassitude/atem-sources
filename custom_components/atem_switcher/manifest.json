@@ -5,8 +5,8 @@
     "@stblassitu.de"
   ],
   "config_flow": true,
-  "documentation": "https://github.com/stblassitude/atem-switcher",
+  "documentation": "https://github.com/stblassitude/atem_switcher",
   "iot_class": "cloud_polling",
-  "issue_tracker": "https://github.com/stblassitudeatem-switcher/issues",
+  "issue_tracker": "https://github.com/stblassitudeatem_switcher/issues",
   "version": "0.1.0"
 }

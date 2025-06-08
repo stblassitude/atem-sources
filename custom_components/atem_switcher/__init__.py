@@ -1,4 +1,4 @@
-"""Custom integration to integrate atem-switcher with Home Assistant."""
+"""Custom integration to integrate atem_switcher with Home Assistant."""
 
 from __future__ import annotations
 

@@ -1,4 +1,4 @@
-"""Custom types for atem-switcher."""
+"""Custom types for atem_switcher."""
 
 from __future__ import annotations
 

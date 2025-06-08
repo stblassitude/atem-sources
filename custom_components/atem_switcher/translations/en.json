@@ -2,7 +2,7 @@
     "config": {
         "step": {
             "user": {
-                "description": "If you need help with the configuration have a look here: https://github.com/stblassitude/atem-switcher",
+                "description": "If you need help with the configuration have a look here: https://github.com/stblassitude/atem_switcher",
                 "data": {
                     "host": "Hostname"
                 }

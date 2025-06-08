@@ -1,4 +1,4 @@
-"""DataUpdateCoordinator for atem-switcher."""
+"""DataUpdateCoordinator for atem_switcher."""
 
 from __future__ import annotations
 
