@@ -60,9 +60,11 @@ class AtemSwitcherSwitch(AtemSwitcherEntity, SelectEntity):
 
     def _handle_coordinator_update(self) -> None:
         """Process updates from coordinator."""
-        LOGGER.info("Coordinator update: %s", self.coordinator.data)
-        self._current_option = self.coordinator.data["source"]
-        self._options = self.coordinator.data["inputs"]
+        LOGGER.debug("Coordinator update: %s", self.coordinator.data)
+        self._current_option = self._attr_current_option = self.coordinator.data[
+            "source"
+        ]
+        self._options = self._attr_options = self.coordinator.data["inputs"]
 
     def select_option(self, option: str) -> None:
         """Switch to selected option."""

@@ -45,7 +45,9 @@ class AtemSwitcherApiClient:
     def _connect(self) -> None:
         self._switcher.connect(self._hostname)
         self._switcher.waitForConnection(waitForFullHandshake=False)
-        time.sleep(1)
+        while self._switcher.inputProperties[0].longName != "Black":
+            LOGGER.debug("waiting for initial communiation with ATEM to complete")
+            time.sleep(1)
         self.set_source("Color Bars")
         self._connected = True
 
