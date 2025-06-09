@@ -5,11 +5,11 @@
     "@stblassitu.de"
   ],
   "config_flow": true,
-  "dependencies": [
-    "PyATEMMax"
-  ],
   "documentation": "https://github.com/stblassitude/atem_switcher",
   "iot_class": "cloud_polling",
   "issue_tracker": "https://github.com/stblassitudeatem_switcher/issues",
+  "requirements": [
+    "PyATEMMax==1.0b9"
+  ],
   "version": "0.1.0"
 }
