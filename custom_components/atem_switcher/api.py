@@ -67,7 +67,8 @@ class AtemSwitcherApiClient:
         """
         Return list of available input names.
 
-        For the ATEM mini, we use the four HDMI inputs plus the color bars and Media Player 1.
+        For the ATEM mini, we use the four HDMI inputs plus the color bars and
+        Media Player 1.
         """
         return [
             self._switcher.inputProperties[vs].longName
