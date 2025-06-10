@@ -65,6 +65,7 @@ class AtemSwitcherSwitch(AtemSwitcherEntity, SelectEntity):
             "source"
         ]
         self._options = self._attr_options = self.coordinator.data["inputs"]
+        self.async_write_ha_state()
 
     def select_option(self, option: str) -> None:
         """Switch to selected option."""
