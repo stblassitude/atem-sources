@@ -48,7 +48,7 @@ class AtemSwitcherApiClient:
         while self._switcher.inputProperties[0].longName != "Black":
             LOGGER.debug("waiting for initial communiation with ATEM to complete")
             time.sleep(1)
-        self.set_source("Color Bars")
+        self.set_source("Media Player 1")
         self._connected = True
 
     async def wait_for_connection(self) -> None:
@@ -67,10 +67,11 @@ class AtemSwitcherApiClient:
         """
         Return list of available input names.
 
-        For the ATEM mini, we use the four HDMI inputs plus the color bars.
+        For the ATEM mini, we use the four HDMI inputs plus the color bars and Media Player 1.
         """
         return [
-            self._switcher.inputProperties[vs].longName for vs in (1, 2, 3, 4, 0, 1000)
+            self._switcher.inputProperties[vs].longName
+            for vs in (1, 2, 3, 4, 0, 1000, 3010)
         ]
 
     def get_source(self) -> str:
